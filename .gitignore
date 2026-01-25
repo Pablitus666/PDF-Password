@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# PyInstaller
+*.spec
+build/
+dist/
+
+# Virtual environment
+venv/
+.venv/
+env/
+venv.bak/
+
+# Distribution / packaging
+.Python
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+
+# Logs
+*.log
+gude-*.log
+
+# Artifacts and sensitive files
+output/
+*.exe
+*.pfx
+*.cer
+*.ps1
+*.manifest
+*.rar
+*.zip
+PDFPasswordDev.pfx
+PDFPasswordDev.cer
+firmar_PDFPassword.ps1
+instalador_firma_shutdownapp.ps1
+requireAdministrator.manifest
+pdf password.exe
