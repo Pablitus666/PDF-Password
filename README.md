@@ -116,8 +116,9 @@ Pasos:
 
 ## Opción 2: Ejecución en desarrollo
 
-pip install -r requirements.txt
-python main.py
+* pip install -r requirements.txt
+
+* python main.py
 
 ---
 
