@@ -1,131 +1,67 @@
-🎉 AudioConverter v1.0.0 — Initial Stable Release
+## 🚀 PDF Password – Segunda versión estable
 
-Primera versión estable de AudioConverter, una aplicación de escritorio para conversión de audio desarrollada en C# (.NET / WinForms), orientada a uso real, con arquitectura sólida, progreso real y cancelación segura.
+Nos complace anunciar el lanzamiento oficial de **PDF Password**, una aplicación de escritorio para **proteger y gestionar archivos PDF mediante contraseña**, diseñada con un enfoque en **estabilidad, simplicidad y experiencia de usuario en Windows**.
 
-Este release marca el cierre de la fase de desarrollo base y el inicio de una versión lista para producción.
+Esta versión representa un **build final y firmado**, listo para uso real por parte del usuario final.
 
-✨ Características principales
-🔁 Conversión por lotes (Batch)
+---
 
-Conversión simultánea de múltiples archivos de audio
+### ✨ Características destacadas
 
-Gestión independiente por job
+* 🔐 Protección de archivos PDF mediante contraseña
+* ✏️ Protección contra edición de PDFs
+* 📂 Selección de archivos mediante botón **Buscar PDF**
+* 🖼️ Interfaz gráfica limpia y moderna desarrollada con **Tkinter**
+* 🖥️ Compatibilidad completa con monitores **HiDPI / 4K**
+* 🎨 Uso de imágenes HD escalables (logo, botones y gráficos)
+* 🌐 Soporte de **Internacionalización (i18n)**
+* 🧠 Arquitectura clara y mantenible (UI / Config / Utils)
+* 📦 Ejecutable **.exe empaquetado con PyInstaller**
+* 🔏 **Ejecutable firmado digitalmente** para mayor confianza en Windows
+* 🚫 Eliminación de dependencias inestables en producción
+* 🧪 Drag & Drop disponible solo en entorno de desarrollo
 
-Estados claros por archivo
+---
 
-📊 Progreso real
+### 🛡️ Estabilidad y seguridad
 
-Progreso calculado a partir de datos reales de FFmpeg
+* ✔️ Sin dependencias experimentales en el ejecutable final
+* ✔️ Drag & Drop deshabilitado en producción para evitar crashes
+* ✔️ DPI Awareness activado para evitar escalado borroso
+* ✔️ Comportamiento consistente en Windows 10 y Windows 11
 
-Uso de -progress pipe:1
+---
 
-Barra de progreso precisa y confiable (no simulada)
+### 📦 Contenido del Release
 
-⛔ Cancelación segura
+* `PDF Password.exe` – Ejecutable principal firmado
+* Recursos gráficos embebidos
+* No requiere instalación de Python ni dependencias externas
 
-Cancelación individual por archivo
+---
 
-Cancelación global del batch completo
+### 🚀 Cómo usar
 
-Finalización forzada del proceso FFmpeg y su árbol (Kill(true))
+1. Descarga el archivo desde esta sección **Releases**
+2. Ejecuta `PDF Password.exe`
+3. Selecciona un archivo PDF
+4. Ingresa la contraseña
+5. Protege o gestiona tu PDF en segundos
 
-Sin procesos huérfanos ni zombies
+---
 
-🎧 Formatos soportados
+### ⚠️ Nota legal
 
-WAV
+Este software está destinado únicamente al uso legítimo sobre archivos PDF de los cuales el usuario tenga autorización.
+El autor no se responsabiliza por el uso indebido de la herramienta.
 
-MP3
+---
 
-FLAC
+### 📄 Licencia
 
-🎚️ Opciones de audio
+Distribuido bajo licencia **MIT**.
 
-Frecuencia de muestreo configurable
+---
 
-Canales (Mono / Stereo)
-
-Profundidad de bits
-
-Formato de salida seleccionable
-
-🖥️ Interfaz
-
-UI clara y moderna (WinForms personalizado)
-
-Tabla de jobs con:
-
-Archivo
-
-Progreso
-
-Estado
-
-Cancelación individual
-
-Bloqueo inteligente de controles durante la conversión
-
-📦 FFmpeg embebido
-
-No requiere FFmpeg instalado
-
-Ejecutable portable
-
-Extracción automática del binario en tiempo de ejecución
-
-🧱 Arquitectura
-
-Separación clara entre UI, Core y Runner
-
-Lógica de conversión desacoplada
-
-ConversionJob independiente por archivo
-
-CancellationTokenSource por job y global
-
-Diseño escalable y mantenible
-
-🛠️ Requisitos
-
-Windows 10 / 11
-
-.NET Desktop Runtime compatible con WinForms
-
-No se requieren dependencias externas
-
-🚀 Instalación
-
-Descargar el archivo .zip desde este release
-
-Extraer el contenido
-
-Ejecutar AudioConverter.exe
-
-No requiere instalación adicional.
-
-📦 Estado del proyecto
-
-✔️ Estable
-✔️ Listo para uso real
-✔️ Arquitectura preparada para futuras mejoras
-
-🔮 Próximas mejoras planificadas
-
-ETA / tiempo restante por archivo
-
-Soporte para más formatos
-
-Perfiles de calidad avanzados
-
-Migración a WPF
-
-Cola persistente entre sesiones
-
-📄 Licencia
-
-Este proyecto se distribuye bajo la licencia MIT.
-
-👨‍💻 Autor
-
-Pablo Téllez
-Contacto: pharmakoz@gmail.com
+💬 **Feedback, reportes de errores y sugerencias son bienvenidos**
+Este proyecto seguirá evolucionando con foco en estabilidad y buenas prácticas.

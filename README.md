@@ -97,13 +97,22 @@ PDF Password
 
 ## 🚀 Ejecución
 
-* Opción 1: Ejecutable
-* Descarga el archivo desde Releases
-* Extrae el contenido
-* Ejecuta Password.exe
-* No requiere Python instalado.
+* Opción 1: Ejecutable (recomendado)
 
----
+Puedes descargar la última versión estable directamente desde la sección Releases del repositorio oficial:
+
+👉 Descargar desde GitHub Releases:
+https://github.com/Pablitus666/PDF-Password/releases
+
+Pasos:
+
+* Descarga el archivo .zip desde Releases
+
+* Extrae el contenido
+
+* Ejecuta PDF Password.exe
+
+* No requiere Python instalado ni dependencias externas
 
 ## Opción 2: Ejecución en desarrollo
 
