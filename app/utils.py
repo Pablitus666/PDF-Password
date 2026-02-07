@@ -1,6 +1,5 @@
 import tkinter as tk
 import os
-import ctypes
 from PIL import Image, ImageTk # Import PIL and ImageTk
 
 # Para interactuar con las entradas globales del UI (file_entry, password_entry)
@@ -11,40 +10,16 @@ from PIL import Image, ImageTk # Import PIL and ImageTk
 def get_dpi_scale_factor(window):
     """
     Obtiene el factor de escala de DPI para una ventana dada en Windows.
-    Intenta usar métodos modernos y recurre a los más antiguos por compatibilidad.
     Retorna 1.0 si no se puede determinar.
     """
     scale_factor = 1.0 # Default fallback
     
     try:
-        # Intenta el método más moderno para configurar el reconocimiento de DPI (Windows 10 v1607+)
-        # PROCESS_PER_MONITOR_DPI_AWARE = 2
-        # ctypes.windll.shcore.SetProcessDpiAwareness(2) is deprecated, use SetProcessDpiAwarenessContext
-        DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = -4
-        if hasattr(ctypes.windll.shcore, 'SetProcessDpiAwarenessContext'):
-            ctypes.windll.shcore.SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2)
-        elif hasattr(ctypes.windll.shcore, 'SetProcessDpiAwareness'):
-            ctypes.windll.shcore.SetProcessDpiAwareness(2) # PROCESS_PER_MONITOR_DPI_AWARE
-        elif hasattr(ctypes.windll.user32, 'SetProcessDPIAware'):
-            ctypes.windll.user32.SetProcessDPIAware()
-        else:
-            print("Advertencia: No se encontró ninguna función para establecer el reconocimiento de DPI.")
-            
         # Obtener el handle de la ventana
         window.update_idletasks()
-        hwnd = ctypes.windll.user32.GetParent(window.winfo_id())
-
-        # Intentar GetDpiForWindow (Windows 10 v1607+)
-        if hasattr(ctypes.windll.user32, 'GetDpiForWindow'):
-            dpi = ctypes.windll.user32.GetDpiForWindow(hwnd)
-            scale_factor = dpi / 96.0
-        else:
-            # Recurrir a GetDeviceCaps si GetDpiForWindow no está disponible
-            dc = ctypes.windll.user32.GetDC(0)
-            # 90 es LOGPIXELSY (píxeles lógicos por pulgada vertical)
-            dpi = ctypes.windll.gdi32.GetDeviceCaps(dc, 90)
-            ctypes.windll.user32.ReleaseDC(0, dc)
-            scale_factor = dpi / 96.0
+        # Use existing tkinter methods to get DPI, as DPI awareness is set globally in main.py
+        dpi = window.winfo_pixels('1i') # Get DPI for the window (pixels per inch)
+        scale_factor = dpi / 96.0 # Standard DPI is 96
 
     except Exception as e:
         print(f"No se pudo obtener el factor de escala DPI: {e}")

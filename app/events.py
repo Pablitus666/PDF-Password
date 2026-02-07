@@ -20,9 +20,11 @@ def open_file_dialog(file_entry):
         file_entry.config(state='readonly')
 
 
-def process_file_encrypt(root, file_entry, password_entry):
+def _validate_inputs_for_encryption(root, file_entry, password_entry):
+    """Helper to validate common inputs for encryption functions."""
     file_path = file_entry.get().strip('{}')
     password = password_entry.get()
+
     if not file_path.strip() or not password.strip():
         show_custom_messagebox(
             root,
@@ -30,7 +32,7 @@ def process_file_encrypt(root, file_entry, password_entry):
             _("input_error_provide_path_password"),
             None
         )
-        return
+        return None, None
 
     # Check if the PDF is already encrypted
     if is_pdf_encrypted(file_path):
@@ -40,6 +42,14 @@ def process_file_encrypt(root, file_entry, password_entry):
             _("file_already_encrypted_message"),
             None
         )
+        return None, None
+
+    return file_path, password
+
+
+def process_file_encrypt(root, file_entry, password_entry):
+    file_path, password = _validate_inputs_for_encryption(root, file_entry, password_entry)
+    if not file_path:
         return
 
     new_file_path = (
@@ -48,6 +58,13 @@ def process_file_encrypt(root, file_entry, password_entry):
 
     try:
         encrypt_pdf(file_path, new_file_path, password)
+        show_custom_messagebox(
+            root,
+            _("success_title"),
+            _(f"file_encrypted_view_success_message") + \
+                f"{_('saved_as_message_suffix')}{os.path.basename(new_file_path)}",
+            new_file_path
+        )
     except ValueError as e:
         show_custom_messagebox(
             root,
@@ -102,26 +119,8 @@ def process_file_decrypt(root, file_entry, password_entry):
 
 
 def process_file_encrypt_edit(root, file_entry, password_entry):
-    file_path = file_entry.get().strip('{}')
-    password = password_entry.get()
-
-    if not file_path.strip() or not password.strip():
-        show_custom_messagebox(
-            root,
-            _("input_error_title"),
-            _("input_error_provide_path_password"),
-            None
-        )
-        return
-
-    # Check if the PDF is already encrypted
-    if is_pdf_encrypted(file_path):
-        show_custom_messagebox(
-            root,
-            _("file_already_encrypted_title"),
-            _("file_already_encrypted_message"),
-            None
-        )
+    file_path, password = _validate_inputs_for_encryption(root, file_entry, password_entry)
+    if not file_path:
         return
 
     new_file_path = (

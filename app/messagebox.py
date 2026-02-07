@@ -2,8 +2,9 @@ import tkinter as tk
 from tkinter import messagebox
 import os
 from app.config import ICON_PATH, MESSAGEBOX_WIDTH, MESSAGEBOX_HEIGHT, COLOR_PRIMARY, COLOR_ACCENT, COLOR_TEXT, FONT_FAMILY, FONT_SIZE_NORMAL, BUTTON_STYLE_PARAMS, BUTTON_IMAGE_PATH, BUTTON_IMG_WIDTH, BUTTON_IMG_HEIGHT # Import image paths and dimensions
-from app.utils import centrar_ventana, get_dpi_scale_factor
-from app.ui import _load_and_scale_image # Import the helper from app.ui
+from app.utils import centrar_ventana, get_dpi_scale_factor, _load_and_scale_image # Import the helper from app.utils
+from app.localization_manager import _ # Import global translation function
+from app.config import ICON_PATH # Import ICON_PATH from config
 
 def show_custom_messagebox(parent, title, message, file_path=None):
 
@@ -39,12 +40,11 @@ def show_custom_messagebox(parent, title, message, file_path=None):
     button_image_loaded = _load_and_scale_image(BUTTON_IMAGE_PATH, BUTTON_IMG_WIDTH, BUTTON_IMG_HEIGHT, msgbox_scale_factor)
 
     def cerrar_seguro():
-        ok_button.config(state="disabled")
         custom_messagebox.destroy()
 
     ok_button = tk.Button(
         buttons_frame,
-        text="OK",
+        text=_("ok_button"),
         command=cerrar_seguro,
         **BUTTON_STYLE_PARAMS
     )
@@ -72,13 +72,13 @@ def show_custom_messagebox(parent, title, message, file_path=None):
                     os.startfile(carpeta)
             except Exception as e:
                 messagebox.showerror(
-                    "Error",
-                    f"No se pudo abrir la carpeta:\n{str(e)}"
+                    _("error_title"), # Localize
+                    f"{_('folder_open_error_message')}\n{str(e)}" # Localize
                 )
 
         open_button = tk.Button(
             buttons_frame,
-            text="Abrir carpeta",
+            text=_("open_folder_button"),
             command=abrir_carpeta,
             **BUTTON_STYLE_PARAMS
         )

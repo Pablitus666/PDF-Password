@@ -30,5 +30,10 @@
     "edit_protection_removed_success": "Protección de edición eliminada correctamente.",
     "cannot_determine_protection": "No se pudo determinar el tipo de protección del PDF.",
     "file_encrypted_edit_success_message": "¡Archivo cifrado con éxito para protección de edición!",
-    "saved_as_message_suffix": "\nGuardado como: "
+    "file_encrypted_view_success_message": "Datei erfolgreich für Anzeigeschutz verschlüsselt!",
+    "saved_as_message_suffix": "\nGuardado como: ",
+    "ok_button": "OK",
+    "open_folder_button": "Ordner öffnen",
+    "error_title": "Fehler",
+    "folder_open_error_message": "Ordner konnte nicht geöffnet werden:"
 }

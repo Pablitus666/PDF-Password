@@ -135,20 +135,25 @@ def smart_decrypt_pdf(input_file, output_file, password=None):
 
     # ✏️ CASO 2: SOLO PROTECCIÓN DE EDICIÓN
     elif security_type == "edit":
-        doc = fitz.open(input_file)
+        temp_path = None
+        try:
+            doc = fitz.open(input_file)
 
-        temp_fd, temp_path = tempfile.mkstemp(
-            suffix=".pdf",
-            dir=os.path.dirname(input_file)
-        )
-        os.close(temp_fd)
+            temp_fd, temp_path = tempfile.mkstemp(
+                suffix=".pdf",
+                dir=os.path.dirname(input_file)
+            )
+            os.close(temp_fd)
 
-        # Guardar sin cifrado ni permisos
-        doc.save(temp_path)
-        doc.close()
+            # Guardar sin cifrado ni permisos
+            doc.save(temp_path)
+            doc.close()
 
-        shutil.move(temp_path, output_file)
-        return True, _("edit_protection_removed_success")
+            shutil.move(temp_path, output_file)
+            return True, _("edit_protection_removed_success")
+        finally:
+            if temp_path and os.path.exists(temp_path):
+                os.remove(temp_path)
 
     # 🟢 CASO 3: SIN PROTECCIÓN
     elif security_type == "none":
@@ -169,11 +174,13 @@ def encrypt_edit_pdf(input_file, output_file, password):
     if not valid:
         raise ValueError(error_msg)
 
+    temp_path = None
     try:
         doc = fitz.open(input_file)
 
         permissions = fitz.PDF_PERM_PRINT  # permite imprimir, bloquea edición
 
+        # Use a more explicit temp file name
         temp_fd, temp_path = tempfile.mkstemp(
             suffix=".pdf",
             dir=os.path.dirname(input_file)
@@ -190,7 +197,12 @@ def encrypt_edit_pdf(input_file, output_file, password):
         doc.close()
 
         shutil.move(temp_path, output_file)
-        return True, _("file_encrypted_edit_success_message"), output_file
+        # No return value on success, consistent with encrypt_pdf
 
     except Exception as e:
+        # Re-raise exceptions to be handled by the caller
         raise e
+    finally:
+        # Ensure the temporary file is cleaned up if it was created
+        if temp_path and os.path.exists(temp_path):
+            os.remove(temp_path)
