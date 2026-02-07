@@ -15,7 +15,7 @@ El proyecto está pensado como una herramienta ligera y estable, enfocada en el 
 ![License](https://img.shields.io/badge/license-MIT-green?style=flat)
 ![PDF](https://img.shields.io/badge/PDF-encryption%20%26%20permissions-blue?style=flat)
 ![DPI](https://img.shields.io/badge/DPI-aware-Yes-informational?style=flat)
-![Development](https://img.shields.io/badge/dev%20mode-drag%20%26%20drop-lightgrey?style=flat)
+![Drag & Drop](https://img.shields.io/badge/drag%20%26%20drop-always%20available-success?style=flat)
 
 ---
 
@@ -31,7 +31,11 @@ Este proyecto nace con el objetivo de ofrecer una alternativa simple, estable y 
 
 ## ✨ Características principales
 
-* 🔐 Protección de archivos PDF con contraseña
+* ✨ Funcionalidad Drag & Drop para añadir archivos PDF fácilmente.
+* 🔐 Protección de visualización y edición de PDFs con contraseña.
+* 🔍 Detección inteligente del tipo de protección del PDF (visual/edición).
+* 🔓 Descifrado inteligente de PDFs (elimina protección de edición sin contraseña, visual con contraseña).
+* 🚫 Previene el cifrado de PDFs ya protegidos.
 * 📂 Selección manual de archivos mediante botón Buscar PDF
 * 🖼️ Interfaz escalada dinámicamente según DPI (monitores HiDPI / 4K)
 * 🎨 Uso de imágenes HD escalables (logo, robot, botones)
@@ -49,6 +53,8 @@ Este proyecto nace con el objetivo de ofrecer una alternativa simple, estable y 
 
 * Fondo con color primario configurable
 * Logo y elementos gráficos con relieve visual
+* ✨ Botones personalizados con imágenes y escalado dinámico.
+* 💬 Cuadros de mensaje (pop-ups) modales con altura dinámica y botones personalizados.
 * Campo para ruta del archivo PDF
 * Campo para contraseña
 * Botón de acción principal
@@ -64,8 +70,8 @@ PDF Password
 ├── app
 │ ├── config.py # Configuración global (colores, tamaños, AppID)
 │ ├── ui.py # Construcción de la interfaz principal
-│ ├── ui_dnd.py # Drag & Drop (solo en desarrollo)
-│ └── utils.py # Funciones auxiliares (centrado, helpers)
+│ ├── ui_dnd.py # Drag & Drop (integrado con PyInstaller)
+│ └── utils.py # Funciones auxiliares (centrado, helpers, gestión de imágenes DPI-aware)
 │
 ├── images # Recursos gráficos (HD / escalables)
 ├── main.py # Punto de entrada de la aplicación
@@ -85,13 +91,11 @@ PDF Password
 
 ## 🧠 Detalles técnicos destacados
 
-* DPI Awareness activado para evitar imágenes borrosas
-* Carga de imágenes adaptada al factor de escala del monitor
-* Detección automática de entorno:
-* 🧪 Desarrollo → Drag & Drop habilitado
-* 📦 Producción (.exe) → Drag & Drop deshabilitado
-* Eliminación total de tkinterdnd2 en el ejecutable final
-* .exe firmado digitalmente para mayor confianza en Windows
+* ✔️ **DPI Awareness avanzado** para una interfaz nítida y escalada dinámicamente en monitores de alta resolución.
+* ✔️ **Carga inteligente de imágenes** que se adaptan automáticamente al factor de escala del monitor, garantizando nitidez en cualquier pantalla.
+* ✔️ **Funcionalidad Drag & Drop** completamente integrada y operativa, incluso en el ejecutable final compilado con PyInstaller.
+* ✔️ **Inclusión y configuración de `tkinterdnd2`** en el ejecutable final para asegurar un Drag & Drop robusto.
+* ✔️ .exe firmado digitalmente para mayor confianza en Windows
 
 ---
 
@@ -134,7 +138,6 @@ Pasos:
 ## 🔮 Posibles mejoras futuras
 
 * Soporte para múltiples PDFs
-* Eliminación de contraseña
 * Historial de archivos recientes
 * Migración opcional a CustomTkinter
 
