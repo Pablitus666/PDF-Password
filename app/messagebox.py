@@ -26,7 +26,7 @@ def show_custom_messagebox(parent, title, message, file_path=None):
         text=message,
         bg=COLOR_PRIMARY,
         fg=COLOR_TEXT,
-        font=(FONT_FAMILY, FONT_SIZE_NORMAL),
+        font=(FONT_FAMILY, FONT_SIZE_NORMAL, "bold"),
         wraplength=350
     )
     msg_label.pack(pady=20)

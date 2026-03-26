@@ -1,43 +1,38 @@
-# Byte-compiled / optimized / DLL files
+# Python - Compilación y Caché
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.pytest_cache/
 
-# PyInstaller
-*.spec
-build/
-dist/
-
-# Virtual environment
+# Entornos Virtuales
 venv/
 .venv/
 env/
 venv.bak/
 
-# Distribution / packaging
-.Python
-eggs/
-.eggs/
-*.egg-info/
-*.egg
+# PyInstaller - Compilación y Distribución
+build/
+dist/
+*.spec
 
-# Logs
+# Logs de Aplicación
 *.log
-gude-*.log
 
-# Artifacts and sensitive files
-output/
-*.exe
+# Certificados y Scripts de Firma (SENSITIVO)
 *.pfx
 *.cer
 *.ps1
 *.manifest
+
+# Archivos de Salida y Temporales
+output/
+*.exe
 *.rar
 *.zip
-PDFPasswordDev.pfx
-PDFPasswordDev.cer
-firmar_PDFPassword.ps1
-instalador_firma_shutdownapp.ps1
-requireAdministrator.manifest
-pdf password.exe
+
+# Otros
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -154,14 +154,16 @@ Este proyecto se distribuye bajo la licencia **MIT**.
 Las contribuciones, sugerencias y mejoras son bienvenidas.  
 Si encuentras un problema o tienes una idea, no dudes en abrir un *issue* o *pull request*.
 
----
+--- 
 
 ## 👨‍💻 Autor
 
-Proyecto creado con enfoque en **calidad, estabilidad y buenas prácticas**.
+**Walter Pablo Téllez Ayala**  
+Software Developer  
+📍 Bolivia 🇧🇴 <img src="https://flagcdn.com/w20/bo.png" width="20"/> <br>
+📧 [pharmakoz@gmail.com](mailto:pharmakoz@gmail.com) 
 
-*   **Nombre:** Pablo Téllez
-*   **Contacto:** pharmakoz@gmail.com
+© 2026 — PDF Password Tool
 
 ---
 

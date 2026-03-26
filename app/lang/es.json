@@ -10,7 +10,7 @@
     "decrypt_pdf_button": "Descifrar PDF",
     "encrypt_edit_button": "Cifrar Edición",
     "exit_button": "Salir",
-    "file_selected_not_pdf": "El archivo seleccionado no es un PDF.",
+    "file_selected_not_pdf": "El archivo seleccionado NO es un PDF.",
     "file_not_valid_or_damaged": "El archivo no es un PDF válido o está dañado.",
     "file_dialog_pdf_files": "Archivos PDF",
     "input_error_title": "Error de entrada",

@@ -41,8 +41,24 @@ def _load_and_scale_image(path, base_width, base_height, scale_factor):
         return None
 
 def on_drop(event, file_entry):
+    from app.pdf_service import is_valid_pdf
+    from app.messagebox import show_custom_messagebox
+    from app.localization_manager import _
+
     # tkinterdnd2 can return paths enclosed in {}
     file_path = event.data.strip('{}')
+    
+    # Validar si el archivo es un PDF válido
+    valid, error_msg = is_valid_pdf(file_path)
+    if not valid:
+        show_custom_messagebox(
+            file_entry.winfo_toplevel(),
+            _("file_error_title"),
+            error_msg,
+            None
+        )
+        return
+
     file_entry.config(state='normal')
     file_entry.delete(0, tk.END)
     file_entry.insert(0, file_path)
